@@ -151,6 +151,8 @@ newaction {
         print("Cleaning...")
         os.rmdir("./bin")
         os.rmdir("./bin-int")
+        os.remove("App/Makefile")
+        os.remove("Core/Makefile")
         os.remove("Makefile")
         os.remove("*.make")
         print("Done.")
