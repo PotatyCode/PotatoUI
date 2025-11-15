@@ -69,7 +69,7 @@ fi
 
 # Generate makefiles
 echo -e "${YELLOW}Generating makefiles...${NC}"
-premake5 gmake2
+premake5 gmake
 if [ $? -ne 0 ]; then
     echo -e "${RED}Premake failed${NC}"
     exit 1

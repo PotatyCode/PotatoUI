@@ -1,5 +1,5 @@
 -- premake5.lua
-workspace "RaylibProject"
+workspace "PotatoTiler"
     architecture "x64"
     configurations { "Debug", "Release" }
     startproject "App"
