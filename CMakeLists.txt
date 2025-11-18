@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 # Project name will be replaced by init script
-project(__PROJECT_NAME__ VERSION 1.0.0 LANGUAGES CXX)
+project(Potato_Template VERSION 1.0.0 LANGUAGES CXX)
 
 # C++23 standard
 set(CMAKE_CXX_STANDARD 23)
@@ -73,20 +73,20 @@ set_target_properties(core PROPERTIES
 file(GLOB_RECURSE APP_SOURCES "App/src/*.cpp")
 file(GLOB_RECURSE APP_HEADERS "App/include/*.hpp" "App/include/*.h")
 
-add_executable(__PROJECT_NAME__ ${APP_SOURCES} ${APP_HEADERS})
+add_executable(Potato_Template ${APP_SOURCES} ${APP_HEADERS})
 
-target_include_directories(__PROJECT_NAME__
+target_include_directories(Potato_Template
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/App/include
 )
 
-target_link_libraries(__PROJECT_NAME__
+target_link_libraries(Potato_Template
     PRIVATE
         core
 )
 
 # Set executable properties
-set_target_properties(__PROJECT_NAME__ PROPERTIES
+set_target_properties(Potato_Template PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
