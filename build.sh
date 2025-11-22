@@ -76,5 +76,6 @@ echo ""
 # Find and display the executable name
 EXECUTABLE=$(find "$BUILD_DIR/bin" -type f -executable 2>/dev/null | head -1)
 if [ -n "$EXECUTABLE" ]; then
-    echo "Run with: $EXECUTABLE"
+  ./$EXECUTABLE
 fi
+
