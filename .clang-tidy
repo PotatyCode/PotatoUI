@@ -16,6 +16,7 @@ Checks: >
   -cppcoreguidelines-avoid-c-arrays,
   -cppcoreguidelines-owning-memory,
   -readability-function-cognitive-complexity
+ -cppcoreguidelines-non-private-member-variables-in-classes
 
 CheckOptions:
   - key: readability-identifier-naming.NamespaceCase

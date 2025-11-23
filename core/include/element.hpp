@@ -8,8 +8,9 @@
 namespace potato_ui {
 class Element {
 private:
+protected:
     std::optional<raylib::Vector2> dimensions_;
-    raylib::Vector2 position_;
+    raylib::Vector2 position_ = {0, 0};
     raylib::Vector2 padding_ = {0, 0};
     std::optional<raylib::Color> bgColor_;
     std::vector<std::unique_ptr<Element>> childElements_;
