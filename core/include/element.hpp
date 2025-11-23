@@ -12,7 +12,6 @@ private:
     std::optional<raylib::Vector2> dimensions_;
     raylib::Vector2 position_;
     raylib::Vector2 padding_ = {0, 0};
-    raylib::Rectangle bounds_;
     std::optional<raylib::Color> bgColor_;
     std::vector<std::unique_ptr<Element>> childElements_;
     bool childrenHorizental_ = true;
@@ -22,10 +21,11 @@ private:
     Element* rootElement_ = nullptr;
 
 public:
-    Element();
+    Element(raylib::Vector2 dimensions);
     void tile_children();
     raylib::Vector2 calc_position();
-    raylib::Vector2 update_dimension();
+    raylib::Vector2 calc_furthest_point();
+    void update_parent_dimension();
     template <typename T, typename... Args>
     void add_child(Args&&... args);
 
