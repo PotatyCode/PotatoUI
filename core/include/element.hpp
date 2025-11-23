@@ -24,7 +24,7 @@ public:
     Element(raylib::Vector2 dimensions);
     void tile_children();
     raylib::Vector2 calc_position();
-    raylib::Vector2 calc_furthest_point();
+    std::optional<raylib::Vector2> calc_furthest_point();
     void update_parent_dimension();
     template <typename T, typename... Args>
     void add_child(Args&&... args);
