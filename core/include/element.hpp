@@ -1,31 +1,34 @@
 #pragma once
 // Core library header
-#include <Vector2.hpp>
 #include <memory>
+#include <optional>
 #include <raylib-cpp.hpp>
-#include <raylib.h>
+#include <Vector2.hpp>
 #include <vector>
 // Add your library interfaces here
 namespace core {
-class element {
+class Element {
 private:
-  raylib::Vector2 dimensions;
-  raylib::Vector2 position;
-  raylib::Vector2 padding;
-  raylib::Rectangle bounds;
-  raylib::Color bgColor;
-  std::vector<std::unique_ptr<element>> childElements;
-  bool childrenHorizental = true;
+    std::optional<raylib::Vector2> dimensions_;
+    raylib::Vector2 position_;
+    raylib::Vector2 padding_ = {0, 0};
+    raylib::Rectangle bounds_;
+    std::optional<raylib::Color> bgColor_;
+    std::vector<std::unique_ptr<Element>> childElements_;
+    bool childrenHorizental_ = true;
 
-  element *dependentElement;
-  element *Parent;
-  element *RootElement;
-
-  // GETTERS
-  bool isChildrenHorizontal() { return childrenHorizental; }
+    Element* dependentElement_;
+    Element* parent_;
+    Element* rootElement_;
 
 public:
-  void tileChildren();
-  raylib::Vector2 calcPosition();
+    Element();
+    void tile_children();
+    raylib::Vector2 calc_position();
+    raylib::Vector2 update_dimension();
+
+    // GETTERS
+    bool is_children_horizontal() const { return childrenHorizental_; }
+    raylib::Vector2 get_position() { return position_; }
 };
-} // namespace core
+}  // namespace core
