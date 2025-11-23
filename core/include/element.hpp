@@ -5,7 +5,7 @@
 #include <raylib-cpp.hpp>
 #include <Vector2.hpp>
 #include <vector>
-namespace core {
+namespace potato_ui {
 class Element {
 private:
     std::optional<raylib::Vector2> dimensions_;
@@ -39,4 +39,4 @@ public:
     bool is_children_horizontal() const { return childrenHorizental_; }
     raylib::Vector2 get_position() { return position_; }
 };
-}  // namespace core
+}  // namespace potato_ui
