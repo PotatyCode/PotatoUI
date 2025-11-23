@@ -17,15 +17,17 @@ private:
     std::vector<std::unique_ptr<Element>> childElements_;
     bool childrenHorizental_ = true;
 
-    Element* dependentElement_;
-    Element* parent_;
-    Element* rootElement_;
+    Element* dependentElement_ = nullptr;
+    Element* parent_ = nullptr;
+    Element* rootElement_ = nullptr;
 
 public:
     Element();
     void tile_children();
     raylib::Vector2 calc_position();
     raylib::Vector2 update_dimension();
+    template <typename T, typename... Args>
+    void add_child(Args&&... args);
 
     // GETTERS
     bool is_children_horizontal() const { return childrenHorizental_; }

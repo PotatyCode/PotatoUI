@@ -1,5 +1,8 @@
 #include "../include/element.hpp"
 
+#include <memory>
+#include <utility>
+
 namespace core {
 // Core initialization
 Element::Element() {}
@@ -19,4 +22,13 @@ raylib::Vector2 Element::calc_position() {
     return new_position;
 }
 raylib::Vector2 Element::update_dimension() {}
+template <typename T, typename... Args>
+void Element::add_child(Args&&... args) {
+    childElements_.push_back(std::make_unique<T>(std::forward(args))...);
+    childElements_.back()->parent_ = this;
+    childElements_.back()->rootElement_ = this->rootElement_;
+    if (childElements_.size() == 1) {
+        childElements_[0]->dependentElement_ = this;
+    }
+}
 }  // namespace core
