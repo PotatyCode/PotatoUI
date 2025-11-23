@@ -5,7 +5,6 @@
 #include <raylib-cpp.hpp>
 #include <Vector2.hpp>
 #include <vector>
-// Add your library interfaces here
 namespace core {
 class Element {
 private:
