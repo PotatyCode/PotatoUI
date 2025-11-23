@@ -21,13 +21,20 @@ private:
     Element* rootElement_ = nullptr;
 
 public:
-    Element(raylib::Vector2 dimensions);
+    explicit Element(raylib::Vector2 dimensions);
+    virtual ~Element() = default;
+    Element(const Element&) = delete;
+    Element& operator=(const Element&) = delete;
+    Element(Element&&) = default;
+    Element& operator=(Element&&) = default;
+
     void tile_children();
     raylib::Vector2 calc_position();
     std::optional<raylib::Vector2> calc_furthest_point();
     void update_parent_dimension();
     template <typename T, typename... Args>
     void add_child(Args&&... args);
+    virtual void render() = 0;
 
     // GETTERS
     bool is_children_horizontal() const { return childrenHorizental_; }
