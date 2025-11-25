@@ -1,25 +1,32 @@
+#include <raylib.h>
+
 #include <raylib-cpp.hpp>
 
 int main() {
-  // Window configuration
-  const int screenWidth = 1920 / 2;
-  const int screenHeight = 1080 / 2;
+    // Window configuration
+    const int SCREENWIDTH = 1920 / 2;
+    const int screenHeight = 1080 / 2;
 
-  raylib::Window window(screenWidth, screenHeight, "Raylib C++ Template");
+    raylib::Window window(SCREENWIDTH
 
-  // Main game loop
-  while (!window.ShouldClose()) {
-    // Update logic
 
-    // Draw
-    BeginDrawing();
-    window.ClearBackground(RAYWHITE);
 
-    DrawText("Raylib + C++ Template Ready!", 190, 200, 20, LIGHTGRAY);
-    DrawFPS(10, 10);
 
-    EndDrawing();
-  }
+    , screenHeight, "Raylib C++ Template");
 
-  return 0;
+    // Main game loop
+    while (!window.ShouldClose()) {
+        // Update logic
+
+        // Draw
+        BeginDrawing();
+        window.ClearBackground(RAYWHITE);
+
+        DrawText("Raylib + C++ Template Ready!", 190, 200, 20, LIGHTGRAY);
+        DrawFPS(10, 10);
+
+        EndDrawing();
+    }
+
+    return 0;
 }

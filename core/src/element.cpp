@@ -5,7 +5,7 @@
 #include <utility>
 #include <Vector2.hpp>
 
-namespace core {
+namespace potato_ui {
 // Core initialization
 Element::Element(raylib::Vector2 dimensions) : dimensions_(dimensions) {}
 
@@ -65,4 +65,4 @@ void Element::add_child(Args&&... args) {
         dimensions_ = std::nullopt;
     }
 }
-}  // namespace core
+}  // namespace potato_ui

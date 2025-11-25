@@ -6,8 +6,8 @@
 #include <Vector2.hpp>
 #include <vector>
 namespace potato_ui {
+
 class Element {
-private:
 protected:
     std::optional<raylib::Vector2> dimensions_;
     raylib::Vector2 position_ = {0, 0};
@@ -38,6 +38,6 @@ public:
 
     // GETTERS
     bool is_children_horizontal() const { return childrenHorizental_; }
-    raylib::Vector2 get_position() { return position_; }
+    raylib::Vector2 get_position() const { return position_; }
 };
 }  // namespace potato_ui

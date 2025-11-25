@@ -1,5 +1,5 @@
 ---
-Checks: >
+{ Checks: ">
   cppcoreguidelines-*,
   modernize-*,
   performance-*,
@@ -16,36 +16,5 @@ Checks: >
   -cppcoreguidelines-avoid-c-arrays,
   -cppcoreguidelines-owning-memory,
   -readability-function-cognitive-complexity
- -cppcoreguidelines-non-private-member-variables-in-classes
-
-CheckOptions:
-  - key: readability-identifier-naming.NamespaceCase
-    value: lower_case
-  - key: readability-identifier-naming.ClassCase
-    value: CamelCase
-  - key: readability-identifier-naming.StructCase
-    value: CamelCase
-  - key: readability-identifier-naming.EnumCase
-    value: CamelCase
-  - key: readability-identifier-naming.FunctionCase
-    value: lower_case
-  - key: readability-identifier-naming.VariableCase
-    value: lower_case
-  - key: readability-identifier-naming.ConstantCase
-    value: UPPER_CASE
-  - key: readability-identifier-naming.ParameterCase
-    value: lower_case
-  - key: readability-identifier-naming.MemberCase
-    value: lower_case
-  - key: readability-identifier-naming.PrivateMemberSuffix
-    value: '_'
-  - key: readability-identifier-naming.ProtectedMemberSuffix
-    value: '_'
-  - key: readability-identifier-naming.EnumConstantCase
-    value: CamelCase
-  - key: readability-identifier-naming.GlobalConstantCase
-    value: UPPER_CASE
-
-WarningsAsErrors: '*'
-HeaderFilterRegex: '.*'
-FormatStyle: file
+  -cppcoreguidelines-non-private-member-variables-in-classes
+", CheckOptions: [ { key: readability-identifier-naming.NamespaceCase, value: lower_case }, { key: readability-identifier-naming.ClassCase, value: CamelCase }, { key: readability-identifier-naming.StructCase, value: CamelCase }, { key: readability-identifier-naming.EnumCase, value: CamelCase }, { key: readability-identifier-naming.FunctionCase, value: lower_case }, { key: readability-identifier-naming.VariableCase, value: lower_case }, { key: readability-identifier-naming.ConstantCase, value: UPPER_CASE }, { key: readability-identifier-naming.ParameterCase, value: lower_case }, { key: readability-identifier-naming.MemberCase, value: lower_case }, { key: readability-identifier-naming.PrivateMemberSuffix, value: '_' }, { key: readability-identifier-naming.ProtectedMemberSuffix, value: '_' }, { key: readability-identifier-naming.EnumConstantCase, value: CamelCase }, { key: readability-identifier-naming.GlobalConstantCase, value: UPPER_CASE } ], WarningsAsErrors: '*', HeaderFilterRegex: '.*', FormatStyle: file }
