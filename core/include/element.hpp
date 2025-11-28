@@ -38,6 +38,7 @@ public:
     template <typename T, typename... Args>
     void add_child(Args&&... args);
     virtual void render() = 0;
+    void render_children();
 
     // GETTERS
     bool is_children_horizontal() const { return childrenHorizental_; }

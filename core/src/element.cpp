@@ -66,4 +66,10 @@ void Element::add_child(Args&&... args) {
         childElements_.back()->dependentElement_ = &*childElements_[childElements_.size() - 2];
     }
 }
+void Element::render_children() {
+    for (auto& element : childElements_) {
+        element->render();
+        element->render_children();
+    }
+}
 }  // namespace potato_ui
