@@ -1,0 +1,20 @@
+# .clangd (simplified version when you already have .clang-tidy)
+CompileFlags:
+  CompilationDatabase: build/
+  Add:
+    - "-std=c++23"
+  Remove:
+    - "-march=*"
+    - "-mtune=*"
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+
+Index:
+  Background: Build
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes

@@ -9,10 +9,9 @@ int main() {
 
     raylib::Window window(SCREENWIDTH
 
-
-
-
-    , screenHeight, "Raylib C++ Template");
+                          ,
+                          screenHeight,
+                          "Raylib C++ Template");
 
     // Main game loop
     while (!window.ShouldClose()) {

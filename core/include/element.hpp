@@ -1,8 +1,8 @@
 #pragma once
 // Core library header
+#include <Color.hpp>
 #include <memory>
 #include <optional>
-#include <raylib-cpp.hpp>
 #include <Vector2.hpp>
 #include <vector>
 namespace potato_ui {
@@ -17,16 +17,16 @@ protected:
     bool childrenHorizental_ = true;
 
     Element* dependentElement_ = nullptr;
-    Element* parent_ = nullptr;
-    Element* rootElement_ = nullptr;
+    Element* const PARENT = nullptr;
+    Element* const ROOTPARENT = nullptr;
 
 public:
-    explicit Element(raylib::Vector2 dimensions);
+    explicit Element(Element* parent, raylib::Vector2 dimensions);
     virtual ~Element() = default;
     Element(const Element&) = delete;
     Element& operator=(const Element&) = delete;
     Element(Element&&) = default;
-    Element& operator=(Element&&) = default;
+    Element& operator=(Element&&) = delete;
 
     void tile_children();
     raylib::Vector2 calc_position();
