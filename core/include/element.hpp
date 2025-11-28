@@ -1,8 +1,11 @@
 #pragma once
 // Core library header
+#include <raylib.h>
+
 #include <Color.hpp>
 #include <memory>
 #include <optional>
+#include <Rectangle.hpp>
 #include <Vector2.hpp>
 #include <vector>
 namespace potato_ui {
@@ -12,6 +15,7 @@ protected:
     std::optional<raylib::Vector2> dimensions_;
     raylib::Vector2 position_ = {0, 0};
     raylib::Vector2 padding_ = {0, 0};
+    Rectangle rect_;
     std::optional<raylib::Color> bgColor_;
     std::vector<std::unique_ptr<Element>> childElements_;
     bool childrenHorizental_ = true;
