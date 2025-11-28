@@ -7,7 +7,6 @@ namespace potato_ui {
 class ElementManager {
 private:
     std::vector<std::unique_ptr<Element>> rootElements_;
-    friend class Element;
 
 public:
     template <typename T, typename... Args>

@@ -13,15 +13,15 @@ namespace potato_ui {
 class Element {
 protected:
     std::optional<raylib::Vector2> dimensions_;
-    raylib::Vector2 position_ = {0, 0};
-    raylib::Vector2 padding_ = {0, 0};
-    std::optional<raylib::Color> bgColor_;
+    raylib::Vector2 position_{0, 0};
+    raylib::Vector2 padding_{0, 0};
+    raylib::Color bgColor_{WHITE};
     std::vector<std::unique_ptr<Element>> childElements_;
     bool childrenHorizental_ = true;
 
     Element* dependentElement_ = nullptr;
-    Element* const PARENT = nullptr;
-    Element* const ROOTPARENT = nullptr;
+    Element* const PARENT;
+    Element* const ROOTPARENT;
 
 public:
     explicit Element(Element* parent, raylib::Vector2 dimensions);

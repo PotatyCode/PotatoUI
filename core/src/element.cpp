@@ -8,12 +8,8 @@
 namespace potato_ui {
 // Core initialization
 Element::Element(Element* parent, raylib::Vector2 dimensions)
-    : PARENT(parent), ROOTPARENT(PARENT->ROOTPARENT), dimensions_(dimensions) {
-    if (PARENT->childElements_.size() == 1) {
-        dependentElement_ = this;
-        PARENT->dimensions_ = std::nullopt;
-    }
-}
+    : PARENT{parent}, ROOTPARENT{parent != nullptr ? PARENT->ROOTPARENT : nullptr},
+      dimensions_{dimensions} {}
 
 void Element::tile_children() {
     if (childElements_.size() != 0) {
@@ -63,5 +59,11 @@ void Element::update_parent_dimension() {
 template <typename T, typename... Args>
 void Element::add_child(Args&&... args) {
     childElements_.emplace_back(std::make_unique<T>(std::forward<Args>(args))...);
+    if (PARENT->childElements_.size() == 1) {
+        childElements_.back()->dependentElement_ = this;
+        dimensions_ = std::nullopt;
+    } else {
+        childElements_.back()->dependentElement_ = &*childElements_[childElements_.size() - 2];
+    }
 }
 }  // namespace potato_ui

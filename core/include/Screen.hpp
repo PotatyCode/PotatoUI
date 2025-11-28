@@ -10,7 +10,7 @@ private:
 
 public:
     Screen(raylib::Vector2 screen_size = {1080, 1920})
-        : Element(screen_size), ScreenSize_(screen_size) {}
-    ~Screen() = default;
+        : Element{nullptr, screen_size}, ScreenSize_{screen_size} {}
+    ~Screen() override = default;
 };
 }  // namespace potato_ui

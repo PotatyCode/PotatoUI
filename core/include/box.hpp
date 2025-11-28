@@ -1,4 +1,6 @@
 #pragma once
+#include <Rectangle.hpp>
+
 #include "element.hpp"
 
 namespace potato_ui {
