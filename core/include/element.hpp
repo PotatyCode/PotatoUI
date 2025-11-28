@@ -15,7 +15,6 @@ protected:
     std::optional<raylib::Vector2> dimensions_;
     raylib::Vector2 position_ = {0, 0};
     raylib::Vector2 padding_ = {0, 0};
-    Rectangle rect_;
     std::optional<raylib::Color> bgColor_;
     std::vector<std::unique_ptr<Element>> childElements_;
     bool childrenHorizental_ = true;
@@ -43,5 +42,8 @@ public:
     // GETTERS
     bool is_children_horizontal() const { return childrenHorizental_; }
     raylib::Vector2 get_position() const { return position_; }
+    raylib::Rectangle get_bounds() const {
+        return {position_.x, position_.y, dimensions_->x, dimensions_->y};
+    }
 };
 }  // namespace potato_ui
