@@ -35,8 +35,16 @@ public:
     raylib::Vector2 calc_position();
     std::optional<raylib::Vector2> calc_furthest_point();
     void update_parent_dimension();
-    template <typename T, typename... Args>
-    void add_child(Args&&... args);
+    template <typename T>
+    void add_child(raylib::Vector2 dimensions) {
+        childElements_.emplace_back(std::unique_ptr<Element>(std::make_unique<T>(dimensions)));
+        if (PARENT->childElements_.size() == 1) {
+            childElements_.back()->dependentElement_ = this;
+            dimensions_ = std::nullopt;
+        } else {
+            childElements_.back()->dependentElement_ = &*childElements_[childElements_.size() - 2];
+        }
+    }
     virtual void render() = 0;
     void render_children();
 
