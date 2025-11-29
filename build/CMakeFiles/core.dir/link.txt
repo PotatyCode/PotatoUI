@@ -1,2 +1,0 @@
-/usr/bin/ar qc lib/libcore.a CMakeFiles/core.dir/core/src/ElementManager.cpp.o CMakeFiles/core.dir/core/src/box.cpp.o CMakeFiles/core.dir/core/src/element.cpp.o
-/usr/bin/ranlib lib/libcore.a
