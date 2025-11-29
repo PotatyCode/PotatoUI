@@ -3,6 +3,7 @@
 #include <raylib.h>
 
 #include <Rectangle.hpp>
+#include <Vector2.hpp>
 namespace potato_ui {
 void Box::render() {
     raylib::Rectangle bounds{get_bounds()};

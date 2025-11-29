@@ -14,7 +14,9 @@ private:
 
 public:
     template <typename T>
-    void add_root_element(raylib::Vector2 dimensions);
+    void add_root_element(raylib::Vector2 dimensions) {
+        rootElements_.push_back(std::make_unique<T>(&screen_, dimensions));
+    }
     ElementManager() { add_root_element<Box>({100, 100}); }
     void render_all();
 };

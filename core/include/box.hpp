@@ -5,10 +5,10 @@
 #include "element.hpp"
 
 namespace potato_ui {
-class Box : Element {
+class Box : public Element {
 public:
     void render() override;
-    Box(Element* parent, raylib::Vector2 dimensions);
+    Box(Element* parent, raylib::Vector2 dimensions) : Element(parent, dimensions) {};
     ~Box() override = default;
 };
 }  // namespace potato_ui
