@@ -1,0 +1,1 @@
+/usr/bin/c++ -g1 -O0 -Wl,--dependency-file=CMakeFiles/Potato_Template.dir/link.d CMakeFiles/Potato_Template.dir/App/src/main.cpp.o -o bin/Potato_Template  lib/libcore.a /usr/lib/libraylib.so -L/usr/lib -lraylib

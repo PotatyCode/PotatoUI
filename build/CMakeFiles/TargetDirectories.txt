@@ -1,0 +1,4 @@
+/home/potatyman/Work/Projects/PotatoUI/build/CMakeFiles/core.dir
+/home/potatyman/Work/Projects/PotatoUI/build/CMakeFiles/Potato_Template.dir
+/home/potatyman/Work/Projects/PotatoUI/build/CMakeFiles/edit_cache.dir
+/home/potatyman/Work/Projects/PotatoUI/build/CMakeFiles/rebuild_cache.dir

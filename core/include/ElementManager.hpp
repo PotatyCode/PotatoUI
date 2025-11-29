@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <Vector2.hpp>
 #include <vector>
 
 #include "box.hpp"
@@ -12,8 +13,8 @@ private:
     Screen screen_;
 
 public:
-    template <typename T, typename... Args>
-    void add_root_element(Args&&... args);
+    template <typename T>
+    void add_root_element(raylib::Vector2 dimensions);
     ElementManager() { add_root_element<Box>({100, 100}); }
     void render_all();
 };
