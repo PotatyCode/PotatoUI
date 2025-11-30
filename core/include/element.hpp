@@ -6,6 +6,7 @@
 #include <memory>
 #include <optional>
 #include <Rectangle.hpp>
+#include <type_traits>
 #include <Vector2.hpp>
 #include <vector>
 namespace potato_ui {
@@ -35,16 +36,20 @@ public:
     raylib::Vector2 calc_position();
     std::optional<raylib::Vector2> calc_furthest_point();
     void update_parent_dimension();
+
     template <typename T>
     void add_child(raylib::Vector2 dimensions) {
-        childElements_.push_back(std::make_unique<T>(this, dimensions));
+        static_assert(std::is_base_of<Element, T>(), "child must be of base class element");
+        auto& new_child = childElements_.push_back(std::make_unique<T>(this, dimensions));
         if (childElements_.size() == 1) {  // basically if this is the first child
-            childElements_.back()->dependentElement_ = this;
+            new_child->dependentElement_ = this;
             dimensions_ = std::nullopt;
         } else {
-            childElements_.back()->dependentElement_ = &*childElements_[childElements_.size() - 2];
+            childElements_.back()->dependentElement_ =
+                childElements_[childElements_.size() - 2].get();
         }
     }
+
     virtual void render() = 0;
     void render_children();
 
