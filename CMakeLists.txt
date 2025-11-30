@@ -84,7 +84,6 @@ target_link_libraries(Potato_Template
     PRIVATE
         core
 )
-
 # Set executable properties
 set_target_properties(Potato_Template PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"

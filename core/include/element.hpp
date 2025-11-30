@@ -28,7 +28,7 @@ protected:
     Element* rootParent_ = nullptr;
 
 public:
-    explicit Element();
+    Element() = default;
     void init(Element* parent,
               std::string name,
               raylib::Vector2 dimensions,
@@ -47,9 +47,10 @@ public:
     template <typename T>
     void add_child(std::string name, raylib::Vector2 dimensions) {
         static_assert(std::is_base_of<Element, T>(), "child must be of base class element");
-        auto& new_child = std::make_unique<T>();
+        auto&& new_child = std::make_unique<T>();
         Element* new_child_dependent = childElements_.empty() ? this : childElements_.back().get();
-        new_child.init(this, new_child_dependent, std::move(name), dimensions);
+        new_child->init(this, std::move(name), dimensions, new_child_dependent);
+        childElements_.emplace_back(std::move(new_child));
     }
 
     virtual void render() = 0;

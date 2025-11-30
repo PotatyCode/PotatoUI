@@ -14,6 +14,7 @@ void Element::init(Element* parent,
     parent_ = parent;
     name_ = std::move(name);
     dimensions_ = dimensions;
+    dependentElement_ = dependent_element;
 }
 void Element::tile_children() {
     if (childElements_.size() != 0) {

@@ -1,5 +1,7 @@
 #pragma once
 #include <memory>
+#include <string>
+#include <type_traits>
 #include <Vector2.hpp>
 #include <vector>
 
@@ -14,12 +16,15 @@ private:
 
 public:
     template <typename T>
-    void add_root_element(raylib::Vector2 dimensions) {
-        rootElements_.push_back(std::make_unique<T>(&screen_, dimensions));
+    void add_root_element(const std::string& name, raylib::Vector2 dimensions) {
+        static_assert(std::is_base_of<Element, T>(),
+                      "root element must be a class derived from Element");
+        auto& new_root = rootElements_.emplace_back(std::make_unique<T>());
+        new_root.get()->init(&screen_, name, dimensions, &screen_);
     }
     ElementManager() {
-        add_root_element<Box>({100, 100});
-        rootElements_.back()->add_child<Box>({50, 50});
+        add_root_element<Box>("Root Box", {100, 100});
+        rootElements_.back()->add_child<Box>("Child Box", {50, 50});
     }
     void render_all();
     void tile_all();
