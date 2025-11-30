@@ -15,6 +15,7 @@ int main() {
     // Main game loop
     while (!raylib::Window::ShouldClose()) {
         // Update logic
+        element_manager.tile_all();
 
         // Draw
         BeginDrawing();

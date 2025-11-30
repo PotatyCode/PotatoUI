@@ -7,6 +7,7 @@
 #include <memory>
 #include <optional>
 #include <Rectangle.hpp>
+#include <string>
 #include <type_traits>
 #include <Vector2.hpp>
 #include <vector>
@@ -14,6 +15,7 @@ namespace potato_ui {
 
 class Element {
 protected:
+    std::string name_;
     std::optional<raylib::Vector2> dimensions_;
     raylib::Vector2 position_{0, 0};
     raylib::Vector2 padding_{0, 0};
@@ -22,11 +24,12 @@ protected:
     bool childrenHorizental_ = true;
 
     Element* dependentElement_ = nullptr;
-    Element* const PARENT;
-    Element* const ROOTPARENT;
+    Element* parent_ = nullptr;
+    Element* rootParent_ = nullptr;
 
 public:
-    explicit Element(Element* parent, raylib::Vector2 dimensions);
+    explicit Element();
+    void init(Element* parent, std::string name, raylib::Vector2 dimensions);
     virtual ~Element() = default;
     Element(const Element&) = delete;
     Element& operator=(const Element&) = delete;
@@ -39,9 +42,9 @@ public:
     void update_parent_dimension();
 
     template <typename T>
-    void add_child(raylib::Vector2 dimensions) {
+    void add_child(std::string name, raylib::Vector2 dimensions) {
         static_assert(std::is_base_of<Element, T>(), "child must be of base class element");
-        auto& new_child = childElements_.emplace_back(std::make_unique<T>(this, dimensions));
+        auto& new_child = childElements_.emplace_back(std::make_unique<T>(this, name, dimensions));
         if (childElements_.size() == 1) {  // basically if this is the first child
             new_child->dependentElement_ = this;
             dimensions_ = std::nullopt;
@@ -49,7 +52,6 @@ public:
             childElements_.back()->dependentElement_ =
                 childElements_[childElements_.size() - 2].get();
         }
-        std::cout << "Child Added";
     }
 
     virtual void render() = 0;
