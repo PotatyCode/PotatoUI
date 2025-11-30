@@ -12,4 +12,9 @@ void ElementManager::render_all() {
         element->render_children();
     }
 }
+void ElementManager::tile_all() {
+    for (auto& element : rootElements_) {
+        element->tile_children();
+    }
+}
 }  // namespace potato_ui

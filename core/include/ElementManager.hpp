@@ -22,6 +22,7 @@ public:
         rootElements_.back()->add_child<Box>({50, 50});
     }
     void render_all();
+    void tile_all();
 };
 
 }  // namespace potato_ui

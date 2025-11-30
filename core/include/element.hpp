@@ -3,6 +3,7 @@
 #include <raylib.h>
 
 #include <Color.hpp>
+#include <iostream>
 #include <memory>
 #include <optional>
 #include <Rectangle.hpp>
@@ -40,7 +41,7 @@ public:
     template <typename T>
     void add_child(raylib::Vector2 dimensions) {
         static_assert(std::is_base_of<Element, T>(), "child must be of base class element");
-        auto& new_child = childElements_.push_back(std::make_unique<T>(this, dimensions));
+        auto& new_child = childElements_.emplace_back(std::make_unique<T>(this, dimensions));
         if (childElements_.size() == 1) {  // basically if this is the first child
             new_child->dependentElement_ = this;
             dimensions_ = std::nullopt;
@@ -48,6 +49,7 @@ public:
             childElements_.back()->dependentElement_ =
                 childElements_[childElements_.size() - 2].get();
         }
+        std::cout << "Child Added";
     }
 
     virtual void render() = 0;
