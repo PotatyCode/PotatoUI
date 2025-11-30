@@ -7,7 +7,10 @@
 #include <Vector2.hpp>
 
 namespace potato_ui {
-void Element::init(Element* parent, std::string name, raylib::Vector2 dimensions) {
+void Element::init(Element* parent,
+                   std::string name,
+                   raylib::Vector2 dimensions,
+                   Element* dependent_element) {
     parent_ = parent;
     name_ = std::move(name);
     dimensions_ = dimensions;

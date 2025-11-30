@@ -3,12 +3,12 @@
 #include <raylib.h>
 
 #include <Color.hpp>
-#include <iostream>
 #include <memory>
 #include <optional>
 #include <Rectangle.hpp>
 #include <string>
 #include <type_traits>
+#include <utility>
 #include <Vector2.hpp>
 #include <vector>
 namespace potato_ui {
@@ -29,7 +29,10 @@ protected:
 
 public:
     explicit Element();
-    void init(Element* parent, std::string name, raylib::Vector2 dimensions);
+    void init(Element* parent,
+              std::string name,
+              raylib::Vector2 dimensions,
+              Element* dependent_element);
     virtual ~Element() = default;
     Element(const Element&) = delete;
     Element& operator=(const Element&) = delete;
@@ -44,14 +47,9 @@ public:
     template <typename T>
     void add_child(std::string name, raylib::Vector2 dimensions) {
         static_assert(std::is_base_of<Element, T>(), "child must be of base class element");
-        auto& new_child = childElements_.emplace_back(std::make_unique<T>(this, name, dimensions));
-        if (childElements_.size() == 1) {  // basically if this is the first child
-            new_child->dependentElement_ = this;
-            dimensions_ = std::nullopt;
-        } else {
-            childElements_.back()->dependentElement_ =
-                childElements_[childElements_.size() - 2].get();
-        }
+        auto& new_child = std::make_unique<T>();
+        Element* new_child_dependent = childElements_.empty() ? this : childElements_.back().get();
+        new_child.init(this, new_child_dependent, std::move(name), dimensions);
     }
 
     virtual void render() = 0;
