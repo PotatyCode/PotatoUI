@@ -37,7 +37,7 @@ public:
     void update_parent_dimension();
     template <typename T>
     void add_child(raylib::Vector2 dimensions) {
-        childElements_.emplace_back(std::unique_ptr<Element>(std::make_unique<T>(dimensions)));
+        childElements_.push_back(std::make_unique<T>(this, dimensions));
         if (PARENT->childElements_.size() == 1) {
             childElements_.back()->dependentElement_ = this;
             dimensions_ = std::nullopt;
