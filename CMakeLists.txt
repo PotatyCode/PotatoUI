@@ -19,7 +19,7 @@ endif()
 # Compiler flags
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     # Fast compilation: minimal debug info, no optimization
-    set(CMAKE_CXX_FLAGS_DEBUG "-g1 -O0")
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
     message(STATUS "Debug mode: Fast compilation enabled")
 elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
     # Maximum performance: aggressive optimization, LTO, native arch

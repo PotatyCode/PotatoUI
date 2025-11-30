@@ -38,7 +38,7 @@ public:
     template <typename T>
     void add_child(raylib::Vector2 dimensions) {
         childElements_.push_back(std::make_unique<T>(this, dimensions));
-        if (PARENT->childElements_.size() == 1) {
+        if (childElements_.size() == 1) {  // basically if this is the first child
             childElements_.back()->dependentElement_ = this;
             dimensions_ = std::nullopt;
         } else {
