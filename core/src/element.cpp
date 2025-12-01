@@ -19,7 +19,7 @@ void Element::init(Element* parent,
 void Element::tile_children() {
     if (childElements_.size() != 0) {
         for (auto& child : childElements_) {
-            child->position_ = calc_position();
+            child->position_ = child->calc_position();
             child->tile_children();
         }
     } else {
